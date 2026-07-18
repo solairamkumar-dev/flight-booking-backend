@@ -17,7 +17,7 @@ public class FlightDetailsController {
 
     private final FlightDetailsService service;
 
-    @GetMapping
+    @GetMapping("/flights")
     public ResponseEntity<List<FlightDetailsResponse>> getFlightDetails(){
         return ResponseEntity.ok(service.getFlightDetails());
     }
