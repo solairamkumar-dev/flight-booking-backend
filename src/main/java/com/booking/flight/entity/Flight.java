@@ -10,9 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class Flight {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     @Column(name = "flight_number", nullable = false)
     private String flightNumber;
 
