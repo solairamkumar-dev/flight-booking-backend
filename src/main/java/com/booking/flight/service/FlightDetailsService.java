@@ -34,7 +34,7 @@ public class FlightDetailsService {
 
     public String updateFlight(Flight flight) {
         repository.save(flight);
-        return "Flight details are updated successfully for flight number "+flight.getFlightNumber();
+        return "Flight details are updated for flight number "+flight.getFlightNumber();
     }
 
 }

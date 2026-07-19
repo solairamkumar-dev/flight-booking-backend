@@ -22,4 +22,19 @@ public class AirportDetailsService {
         repository.saveAll(airports);
         return "Airports added successfully!";
     }
+
+    public String deleteAirportDetail(Airport airport) {
+        repository.delete(airport);
+        return "Airport "+airport.getAirportName()+" delete successfully!";
+    }
+
+    public String updateAirportDetail(Airport airport) {
+        repository.save(airport);
+        return "Airport details for "+airport.getAirportName()+" is updated successfully!";
+    }
+
+    public Airport getAirportDetail(Long id) {
+        return repository.findAirportById(id);
+    }
+
 }

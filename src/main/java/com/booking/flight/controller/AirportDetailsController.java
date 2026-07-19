@@ -23,4 +23,20 @@ public class AirportDetailsController {
     public ResponseEntity<String> addAirports(@RequestBody List<Airport> airports) {
         return ResponseEntity.ok(service.addAirports(airports));
     }
+
+    @DeleteMapping("/airports")
+    public ResponseEntity<String> deleteAirport(@RequestBody Airport airport) {
+        return ResponseEntity.ok(service.deleteAirportDetail(airport));
+    }
+
+    @PutMapping("/airports")
+    public ResponseEntity<String> updateAirportDetail(@RequestBody Airport airport) {
+        return ResponseEntity.ok(service.updateAirportDetail(airport));
+    }
+
+    @GetMapping("/airports/{id}")
+    public ResponseEntity<Airport> findAirport(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getAirportDetail(id));
+    }
+
 }
