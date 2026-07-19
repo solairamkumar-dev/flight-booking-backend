@@ -22,8 +22,8 @@ public class FlightDetailsController {
     }
 
     @PostMapping("/flights")
-    public ResponseEntity<String> addNewFlight(@RequestBody Flight flight) {
-        String response = service.addNewFlight(flight);
+    public ResponseEntity<String> addNewFlight(@RequestBody List<Flight> flights) {
+        String response = service.addNewFlight(flights);
         return ResponseEntity.ok(response);
     }
 

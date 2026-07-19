@@ -22,9 +22,9 @@ public class FlightDetailsService {
         return mapper.toDto(repository.findAll());
     }
 
-    public String addNewFlight(Flight flight) {
-        repository.save(flight);
-        return "New Flight Added Successfully!";
+    public String addNewFlight(List<Flight> flights) {
+        repository.saveAll(flights);
+        return "New Flights Added Successfully!";
     }
 
     public String deleteFlight(Flight flight) {
