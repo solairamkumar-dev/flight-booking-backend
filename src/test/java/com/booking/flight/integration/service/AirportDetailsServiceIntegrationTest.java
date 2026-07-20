@@ -1,4 +1,4 @@
-package com.booking.flight.integration;
+package com.booking.flight.integration.service;
 
 import com.booking.flight.entity.Airport;
 import com.booking.flight.repository.AirportDetailsRepository;
@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 import java.util.List;
 
