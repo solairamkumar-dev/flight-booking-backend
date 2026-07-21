@@ -1,7 +1,11 @@
 package com.booking.flight.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "flight")
@@ -28,5 +32,9 @@ public class Flight {
     private String yearOfMaking;
 
     @Column(name = "is_active")
-    private boolean isActive;
+    private Boolean isActive;
+
+    @OneToMany(mappedBy = "flight" , cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<FlightStatus> statusList = new ArrayList<>();
 }
