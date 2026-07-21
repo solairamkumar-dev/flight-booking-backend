@@ -25,6 +25,9 @@ public class AirportDetailsServiceTest {
 
     @Test
     void returnAllAirports() {
+        int page = 0;
+        int size = 10;
+        String sort = "airportCode";
         Airport airport1 = new Airport();
         airport1.setAirportCode("MAA");
         airport1.setAirportName("Chennai International Airport");
@@ -37,7 +40,7 @@ public class AirportDetailsServiceTest {
 
         when(repository.findAll()).thenReturn(airports);
 
-        List<Airport> result = service.getAllAirports();
+        List<Airport> result = service.getAllAirports(page ,size, sort);
 
     assertNotNull(result);
     assertEquals(2, result.size());

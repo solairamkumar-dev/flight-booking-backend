@@ -6,6 +6,9 @@ import com.booking.flight.dto.FlightDetailsResponse;
 import com.booking.flight.repository.FlightDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,9 +20,10 @@ public class FlightDetailsService {
     private final FlightDetailsRepository repository;
     private final FlightDetailsMapper mapper;
 
-    public List<FlightDetailsResponse> getFlightDetails() {
+    public List<FlightDetailsResponse> getFlightDetails(int page, int size, String sorting) {
         log.info("Fetching all flight Details");
-        return mapper.toDto(repository.findAll());
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sorting));
+        return mapper.toDto(repository.findAll(pageable).getContent());
     }
 
     public String addNewFlight(List<Flight> flights) {

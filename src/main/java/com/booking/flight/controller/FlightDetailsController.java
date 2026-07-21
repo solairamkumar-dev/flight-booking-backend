@@ -4,6 +4,8 @@ import com.booking.flight.dto.FlightDetailsResponse;
 import com.booking.flight.entity.Flight;
 import com.booking.flight.service.FlightDetailsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +19,11 @@ public class FlightDetailsController {
     private final FlightDetailsService service;
 
     @GetMapping("/flights")
-    public ResponseEntity<List<FlightDetailsResponse>> getFlightDetails(){
-        return ResponseEntity.ok(service.getFlightDetails());
+    public ResponseEntity<List<FlightDetailsResponse>> getFlightDetails(
+            @RequestParam(defaultValue = "0") int page ,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "flightName") String sorting){
+        return ResponseEntity.ok(service.getFlightDetails(page,size,sorting));
     }
 
     @PostMapping("/flights")

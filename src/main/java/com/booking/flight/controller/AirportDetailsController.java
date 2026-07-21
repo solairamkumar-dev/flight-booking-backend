@@ -15,8 +15,10 @@ public class AirportDetailsController {
 
     private final AirportDetailsService service;
     @GetMapping("/airports")
-    public ResponseEntity<List<Airport>> getAllAirports() {
-      return ResponseEntity.ok(service.getAllAirports());
+    public ResponseEntity<List<Airport>> getAllAirports(@RequestParam(defaultValue = "0") int page,
+                                                        @RequestParam(defaultValue = "5") int size,
+                                                        @RequestParam(defaultValue = "airportCode") String sort) {
+      return ResponseEntity.ok(service.getAllAirports(page,size,sort));
     }
 
     @PostMapping("/airports")

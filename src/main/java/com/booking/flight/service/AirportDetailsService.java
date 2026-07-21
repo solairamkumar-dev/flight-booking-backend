@@ -3,6 +3,9 @@ package com.booking.flight.service;
 import com.booking.flight.entity.Airport;
 import com.booking.flight.repository.AirportDetailsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +16,9 @@ public class AirportDetailsService {
 
     private final AirportDetailsRepository repository;
 
-    public List<Airport> getAllAirports() {
-        return repository.findAll();
+    public List<Airport> getAllAirports(int page, int size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        return repository.findAll(pageable).getContent();
     }
 
 

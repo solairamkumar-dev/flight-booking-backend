@@ -26,9 +26,11 @@ public class AirportDetailsServiceIntegrationTest {
 
 
     @Test
-    void fetchAlAirports() {
-
-        List<Airport> airports = service.getAllAirports();
+    void fetchAllAirports() {
+        int page = 0;
+        int size = 10;
+        String sort = "airportCode";
+        List<Airport> airports = service.getAllAirports( page,size, sort);
 
         assertNotNull(airports);
         assertTrue(airports.size()>5);
