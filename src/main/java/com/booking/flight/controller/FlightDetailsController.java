@@ -26,6 +26,11 @@ public class FlightDetailsController {
         return ResponseEntity.ok(service.getFlightDetails(page,size,sorting));
     }
 
+    @GetMapping("flight/{id}")
+    public ResponseEntity<FlightDetailsResponse> getFlightDetail(@PathVariable Long id){
+        return ResponseEntity.ok(service.getFlightDetail(id));
+    }
+
     @PostMapping("/flights")
     public ResponseEntity<String> addNewFlight(@RequestBody List<Flight> flights) {
         String response = service.addNewFlight(flights);
